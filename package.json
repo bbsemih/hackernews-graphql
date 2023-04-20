@@ -1,0 +1,31 @@
+{
+    "name": "hacker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
+        "generate": "ts-node --transpile-only src/schema.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bbsemih/hackernews-graphql.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bbsemih/hackernews-graphql/issues"
+    },
+    "homepage": "https://github.com/bbsemih/hackernews-graphql#readme",
+    "devDependencies": {
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "apollo-server": "^3.12.0",
+        "graphql": "^15.8.0",
+        "nexus": "^1.3.0"
+    }
+}
