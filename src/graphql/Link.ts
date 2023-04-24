@@ -9,16 +9,25 @@ export const Link = objectType({
         t.nonNull.id("id");
         t.nonNull.string("url");
         t.nonNull.string("description");
+        t.nonNull.dateTime("createdAt");
         t.field("postedBy", {
             type:"User",
             resolve(parent,args,context) {
                 return context.prisma.link
-                    .findUnique({where: {id:parent.id}})
+                    .findUnique({where: {id:parseInt(parent.id)}})
                     .postedBy();
+            }
+        });
+        t.nonNull.list.nonNull.field("voters", {
+            type:"User",
+            resolve(parent,args,context) {
+                return context.prisma.link
+                    .findUnique({where: {id:parseInt(parent.id)}})
+                    .voters();
             }
         })
     }
-})
+});
 
 export const LinkQuery = extendType({
     type: "Query",
