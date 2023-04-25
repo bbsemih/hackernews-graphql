@@ -7,7 +7,7 @@ export interface AuthTokenPayload {
 }
 
 export function decodeAuthHeader(authHeader:String): AuthTokenPayload {
-    const token = authHeader.replace("Bearer","");
+    const token = authHeader.replace("Bearer ","");
 
     if(!token) {
         throw new Error("No token found!");

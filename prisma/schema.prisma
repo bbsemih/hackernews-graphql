@@ -1,9 +1,9 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgres"
+  url      = "postgresql://semihozturk:Sherlocked2@localhost:5432/prisma"
 }
 
-generator client {
+generator client {  
   provider = "prisma-client-js"
 }
 model Link {
