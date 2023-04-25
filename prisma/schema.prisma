@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgres"
-  url      = "postgresql://semihozturk:Sherlocked2@localhost:5432/prisma"
+  url      = "postgres://postgres:postgres@localhost:5432/hackernews-db"
 }
 
 generator client {  
