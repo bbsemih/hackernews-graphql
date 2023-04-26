@@ -1,4 +1,4 @@
-import { extendType, idArg, intArg, nonNull, objectType, stringArg} from "nexus";
+import { extendType, idArg, nonNull, objectType, stringArg} from "nexus";
 
 export const User = objectType({
     name:"User",
@@ -6,6 +6,7 @@ export const User = objectType({
         t.nonNull.int("id");
         t.nonNull.string("name")
         t.nonNull.string("email");
+        t.nonNull.string("role", { default :"regular"});
         //non-nullable array of Link type objects.
         t.nonNull.list.nonNull.field("links", {
             type:"Link",

@@ -1,7 +1,5 @@
 import { Prisma } from '@prisma/client';
 import { extendType,objectType,nonNull,stringArg, idArg, intArg, arg, inputObjectType,enumType,list } from 'nexus';
-//defining a new Link type that represents the links that can be posted to Hacker News.
-
 
 //LinkOrderByInput represents the criteria by which that the list of Link elements can be sorted. 
 //The Sort enum is used to define the sorting order.

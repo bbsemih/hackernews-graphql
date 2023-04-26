@@ -21,7 +21,7 @@ export const AuthMutation = extendType({
             args: {
                 email:nonNull(stringArg()),
                 password:nonNull(stringArg()),
-                name:nonNull(stringArg())
+                name:nonNull(stringArg()),
             },
             async resolve(parent,args,context) {
                 const {email,name} = args;
@@ -30,6 +30,30 @@ export const AuthMutation = extendType({
 
                 const user = await context.prisma.user.create({
                     data: {email,name,password},
+                });
+                const token = jwt.sign({userId: user.id},APP_SECRET);
+                return {
+                    token,
+                    user
+                }
+            }
+        });
+
+        t.nonNull.field("createUser", {
+            type:"AuthPayload",
+            args: {
+                email:nonNull(stringArg()),
+                password:nonNull(stringArg()),
+                name:nonNull(stringArg()),
+                role:stringArg(),
+            },
+            async resolve(parent,args,context) {
+                const {email,name,role} = args;
+                //hash the password using bcrypt
+                const password = await bcrypt.hash(args.password,10);
+
+                const user = await context.prisma.user.create({
+                    data: {email,name,password,role},
                 });
                 const token = jwt.sign({userId: user.id},APP_SECRET);
                 return {
