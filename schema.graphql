@@ -35,15 +35,18 @@ input LinkOrderByInput {
 
 type Mutation {
   delete(id: ID!): Link!
+  deleteMe: User!
   login(email: String!, password: String!): AuthPayload!
   post(description: String!, url: String!): Link!
   signup(email: String!, name: String!, password: String!): AuthPayload!
   update(description: String, id: ID!, url: String): Link!
+  updateMe(email: String, name: String): User!
   vote(linkId: Int!): Vote
 }
 
 type Query {
   feed(filter: String, orderBy: [LinkOrderByInput!], skip: Int, take: Int): Feed!
+  user(id: ID!): User!
 }
 
 enum Sort {

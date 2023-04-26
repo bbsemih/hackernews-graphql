@@ -108,14 +108,17 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     delete: NexusGenRootTypes['Link']; // Link!
+    deleteMe: NexusGenRootTypes['User']; // User!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     post: NexusGenRootTypes['Link']; // Link!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     update: NexusGenRootTypes['Link']; // Link!
+    updateMe: NexusGenRootTypes['User']; // User!
     vote: NexusGenRootTypes['Vote'] | null; // Vote
   }
   Query: { // field return type
     feed: NexusGenRootTypes['Feed']; // Feed!
+    user: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     email: string; // String!
@@ -150,14 +153,17 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     delete: 'Link'
+    deleteMe: 'User'
     login: 'AuthPayload'
     post: 'Link'
     signup: 'AuthPayload'
     update: 'Link'
+    updateMe: 'User'
     vote: 'Vote'
   }
   Query: { // field return type name
     feed: 'Feed'
+    user: 'User'
   }
   User: { // field return type name
     email: 'String'
@@ -195,6 +201,10 @@ export interface NexusGenArgTypes {
       id: string; // ID!
       url?: string | null; // String
     }
+    updateMe: { // args
+      email?: string | null; // String
+      name?: string | null; // String
+    }
     vote: { // args
       linkId: number; // Int!
     }
@@ -205,6 +215,9 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenInputs['LinkOrderByInput'][] | null; // [LinkOrderByInput!]
       skip?: number | null; // Int
       take?: number | null; // Int
+    }
+    user: { // args
+      id: string; // ID!
     }
   }
 }
