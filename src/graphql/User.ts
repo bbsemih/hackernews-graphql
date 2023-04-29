@@ -1,10 +1,11 @@
 import { extendType, idArg, nonNull, objectType, stringArg} from "nexus";
 
+
 export const User = objectType({
     name:"User",
     definition(t) {
         t.nonNull.int("id");
-        t.nonNull.string("name")
+        t.nonNull.string("name");
         t.nonNull.string("email");
         t.nonNull.string("role", { default :"regular"});
         //non-nullable array of Link type objects.

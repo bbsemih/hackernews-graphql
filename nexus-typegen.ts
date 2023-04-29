@@ -54,6 +54,12 @@ export interface NexusGenObjects {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  Comment: { // root type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    id: string; // ID!
+    linkId: number; // Int!
+    text: string; // String!
+  }
   Feed: { // root type
     count: number; // Int!
     id?: string | null; // ID
@@ -94,6 +100,13 @@ export interface NexusGenFieldTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  Comment: { // field return type
+    createdAt: NexusGenScalars['DateTime']; // DateTime!
+    id: string; // ID!
+    linkId: number; // Int!
+    postedBy: NexusGenRootTypes['User'] | null; // User
+    text: string; // String!
+  }
   Feed: { // field return type
     count: number; // Int!
     id: string | null; // ID
@@ -108,6 +121,7 @@ export interface NexusGenFieldTypes {
     voters: NexusGenRootTypes['User'][]; // [User!]!
   }
   Mutation: { // field return type
+    comment: NexusGenRootTypes['Comment']; // Comment!
     createUser: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     delete: NexusGenRootTypes['Link']; // Link!
     deleteMe: NexusGenRootTypes['User']; // User!
@@ -141,6 +155,13 @@ export interface NexusGenFieldTypeNames {
     token: 'String'
     user: 'User'
   }
+  Comment: { // field return type name
+    createdAt: 'DateTime'
+    id: 'ID'
+    linkId: 'Int'
+    postedBy: 'User'
+    text: 'String'
+  }
   Feed: { // field return type name
     count: 'Int'
     id: 'ID'
@@ -155,6 +176,7 @@ export interface NexusGenFieldTypeNames {
     voters: 'User'
   }
   Mutation: { // field return type name
+    comment: 'Comment'
     createUser: 'AuthPayload'
     delete: 'Link'
     deleteMe: 'User'
@@ -185,6 +207,10 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    comment: { // args
+      linkId: number; // Int!
+      text: string; // String!
+    }
     createUser: { // args
       email: string; // String!
       name: string; // String!

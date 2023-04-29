@@ -12,6 +12,7 @@ export const LinkOrderByInput = inputObjectType({
     },
 });
 
+
 export const Sort = enumType({
     name: "Sort",
     members: ["asc", "desc"],
@@ -39,7 +40,14 @@ export const Link = objectType({
                     .findUnique({where: {id:parseInt(parent.id)}})
                     .voters();
             }
+        });
+
+        /*t.list.field("comments", {
+            type:"Comment",
+            resolve(parent,args,context) {
+            }
         })
+        */
     }
 });
 
@@ -152,3 +160,7 @@ export const LinkMutation = extendType({
         })
     }
 });
+
+
+
+

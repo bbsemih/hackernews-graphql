@@ -24,3 +24,9 @@ model User {
   links Link[] @relation(name: "PostedBy")
   votes Link[] @relation(name: "Votes")
 }
+
+model Comment {
+  id Int @id @default(autoincrement())
+  text String
+  createdAt DateTime @default(now())
+}
